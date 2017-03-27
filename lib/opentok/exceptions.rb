@@ -7,4 +7,6 @@ module OpenTok
   # Defines errors raised when you attempt an operation using an invalid OpenTok API key or secret.
   class OpenTokAuthenticationError < OpenTokError; end
 
+  #Defines errors by Sip
+  class OpenTokSipError < OpenTokError; end
 end

@@ -137,5 +137,17 @@ module OpenTok
     rescue StandardError => e
       raise OpenTokError, "Failed to connect to OpenTok. Response code: #{e.message}"
     end
+
+    def dial(session_id, token, sip_uri, opts)
+
+      opts.extend(HashExtensions)
+
+      body = { "sessionId" => session_id, "token" => token,"sip" => {"uri" => sip_uri,
+                                                                     "auth" => opts[:auth], "secure" => false } }
+      response = self.class.post("/v2/partner/#{@api_key}/call", {
+          :body => body.to_json,:headers => { "Content-Type" => "application/json" }
+      })
+
+    end
   end
 end

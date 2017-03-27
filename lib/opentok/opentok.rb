@@ -172,6 +172,10 @@ module OpenTok
       @archives ||= Archives.new client
     end
 
+    def dial(session_id, token, sip_uri, opts={})
+      client.dial(session_id,token,sip_uri,opts)
+    end
+
     protected
 
     def client
